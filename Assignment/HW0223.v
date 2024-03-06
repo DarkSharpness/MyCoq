@@ -46,5 +46,3 @@ Proof.
   + reflexivity.
   + rewrite IHt2. reflexivity.
 Qed.
-
-

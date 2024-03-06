@@ -14,5 +14,3 @@ Fact opposite_sgn_odds: forall x,
   opposite_sgn (square x) x ->
   x < 0.
 Proof. unfold opposite_sgn, square. lia. Qed.
-
-
