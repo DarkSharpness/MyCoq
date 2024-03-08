@@ -24,7 +24,8 @@ Proof.
   intros.
   unfold bequiv; intros s.
   unfold_sem.
-  simpl; reflexivity.
+  simpl.
+  reflexivity.
 Qed.
 
 Example lt_plus_one_and_fact:
@@ -32,9 +33,11 @@ Example lt_plus_one_and_fact:
     [[ "x" < "x" + 1 && e ]] ~=~ e.
 Proof.
   intros.
-  unfold bequiv; intros s.
-  unfold_sem.
-  destruct (Z_lt_dec (s "x") (s "x" + 1)); simpl.
-  + reflexivity.
-  + lia.
+  intros s.
+  rewrite EAnd_congr.
+  - rewrite true_and_fact.
+    reflexivity.
+  - rewrite lt_plus_one_fact.
+    reflexivity.
+  - reflexivity.
 Qed.
