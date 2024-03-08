@@ -22,11 +22,9 @@ Example true_and_fact:
     [[ ETrue && e ]] ~=~ e.
 Proof.
   intros.
-  unfold bequiv.
-  intros s.
+  unfold bequiv; intros s.
   unfold_sem.
-  simpl andb.
-  reflexivity.
+  simpl; reflexivity.
 Qed.
 
 Example lt_plus_one_and_fact:
@@ -34,11 +32,9 @@ Example lt_plus_one_and_fact:
     [[ "x" < "x" + 1 && e ]] ~=~ e.
 Proof.
   intros.
-  unfold bequiv.
-  intros s.
-  simpl eval_expr_bool.
+  unfold bequiv; intros s.
   unfold_sem.
-  destruct (Z_lt_dec (s "x") (s "x" + 1)).
+  destruct (Z_lt_dec (s "x") (s "x" + 1)); simpl.
   + reflexivity.
   + lia.
 Qed.
