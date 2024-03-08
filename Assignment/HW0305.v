@@ -33,11 +33,6 @@ Example lt_plus_one_and_fact:
     [[ "x" < "x" + 1 && e ]] ~=~ e.
 Proof.
   intros.
-  intros s.
-  rewrite EAnd_congr.
-  - rewrite true_and_fact.
-    reflexivity.
-  - rewrite lt_plus_one_fact.
-    reflexivity.
-  - reflexivity.
+  rewrite lt_plus_one_fact.
+  apply true_and_fact.
 Qed.
